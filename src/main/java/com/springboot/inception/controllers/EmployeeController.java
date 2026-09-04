@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/employees")
@@ -27,5 +28,20 @@ public class EmployeeController {
     @PostMapping
     public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO) {
         return employeeService.createEmployee(employeeDTO);
+    }
+
+    @PutMapping(path = "/{employeeId}")
+    public EmployeeDTO updateEmployee(@PathVariable(name = "employeeId") Long id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.updateEmployee(id, employeeDTO);
+    }
+
+    @DeleteMapping(path = "/{employeeId}")
+    public boolean deleteEmployee(@PathVariable(name = "employeeId") Long id) {
+        return employeeService.deleteEmployee(id);
+    }
+
+    @PatchMapping(path = "/{employeeId}")
+    public EmployeeDTO patchEmployee(@PathVariable(name = "employeeId") Long id, @RequestBody Map<String, Object> updates) {
+        return employeeService.patchEmployee(id, updates);
     }
 }
