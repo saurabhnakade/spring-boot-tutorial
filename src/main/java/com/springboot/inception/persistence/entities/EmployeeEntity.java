@@ -1,16 +1,30 @@
-package com.springboot.inception.dto;
+package com.springboot.inception.persistence.entities;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-public class EmployeeDTO {
+@Entity
+@Table(name = "employees")
+public class EmployeeEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Integer age;
     private LocalDate dateOfBirth;
     private Boolean isActive;
 
-    public EmployeeDTO() {
+    public EmployeeEntity() {
+    }
+
+    public EmployeeEntity(Long id, String name, Integer age, LocalDate dateOfBirth, Boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
     }
 
     public void setId(Long id) {
@@ -51,13 +65,5 @@ public class EmployeeDTO {
 
     public Boolean getIsActive() {
         return isActive;
-    }
-
-    public EmployeeDTO(Long id, String name, Integer age, LocalDate dateOfBirth, Boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.dateOfBirth = dateOfBirth;
-        this.isActive = isActive;
     }
 }
