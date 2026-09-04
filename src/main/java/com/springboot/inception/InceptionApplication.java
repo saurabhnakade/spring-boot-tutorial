@@ -1,5 +1,6 @@
 package com.springboot.inception;
 
+import com.springboot.inception.assignments.module1.CakeBaker;
 import com.springboot.inception.notification.NotificationService;
 import com.springboot.inception.payment.PaymentService;
 import org.springframework.boot.CommandLineRunner;
@@ -11,10 +12,12 @@ public class InceptionApplication implements CommandLineRunner {
 
 	PaymentService paymentService;
 	NotificationService notificationService;
+	CakeBaker cakeBaker;
 
-	InceptionApplication(PaymentService paymentService, NotificationService notificationService) {
+	InceptionApplication(PaymentService paymentService, NotificationService notificationService, CakeBaker cakeBaker) {
 		this.paymentService = paymentService;
 		this.notificationService = notificationService;
+		this.cakeBaker=cakeBaker;
 	}
 
 	public static void main(String[] args) {
@@ -26,5 +29,8 @@ public class InceptionApplication implements CommandLineRunner {
 		paymentService.pay();
 
 		notificationService.sendNotification();
+
+		// Module 1 Assignment: Bake a cake with the configured frosting and syrup
+		cakeBaker.bakeCake();
 	}
 }
