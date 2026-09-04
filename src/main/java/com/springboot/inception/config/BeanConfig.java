@@ -4,6 +4,7 @@ import com.springboot.inception.notification.NotificationService;
 import com.springboot.inception.notification.impl.EmailNotification;
 import com.springboot.inception.notification.impl.SmsNotification;
 import com.springboot.inception.payment.PaymentService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -27,7 +28,7 @@ public class BeanConfig {
     }
 
     @Bean
-    public NotificationService notificationService() {
-        return emailNotification;
+    public NotificationService notificationService(@Qualifier("smsNotification") NotificationService notificationService) {
+        return notificationService;
     }
 }
