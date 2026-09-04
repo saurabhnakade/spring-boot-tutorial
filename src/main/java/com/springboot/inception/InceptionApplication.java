@@ -3,22 +3,18 @@ package com.springboot.inception;
 import com.springboot.inception.assignments.module1.CakeBaker;
 import com.springboot.inception.notification.NotificationService;
 import com.springboot.inception.payment.PaymentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@RequiredArgsConstructor
 public class InceptionApplication implements CommandLineRunner {
 
-	PaymentService paymentService;
-	NotificationService notificationService;
-	CakeBaker cakeBaker;
-
-	InceptionApplication(PaymentService paymentService, NotificationService notificationService, CakeBaker cakeBaker) {
-		this.paymentService = paymentService;
-		this.notificationService = notificationService;
-		this.cakeBaker=cakeBaker;
-	}
+	private final PaymentService paymentService;
+	private final NotificationService notificationService;
+	private final CakeBaker cakeBaker;
 
 	public static void main(String[] args) {
 		SpringApplication.run(InceptionApplication.class, args);

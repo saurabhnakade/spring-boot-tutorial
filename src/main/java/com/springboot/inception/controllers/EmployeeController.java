@@ -4,19 +4,17 @@ import com.springboot.inception.dto.EmployeeDTO;
 import com.springboot.inception.mappers.EmployeeMapper;
 import com.springboot.inception.persistence.EmployeeRepository;
 import com.springboot.inception.persistence.entities.EmployeeEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/employees")
+@RequiredArgsConstructor
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
-
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
 
     @GetMapping
     public List<EmployeeDTO> getEmployees(@RequestParam(required = false, defaultValue = "18") Integer age) {

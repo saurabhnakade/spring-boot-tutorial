@@ -1,7 +1,16 @@
 package com.springboot.inception.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployeeDTO {
 
     private Long id;
@@ -9,55 +18,4 @@ public class EmployeeDTO {
     private Integer age;
     private LocalDate dateOfBirth;
     private Boolean isActive;
-
-    public EmployeeDTO() {
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setIsActive(Boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public Boolean getIsActive() {
-        return isActive;
-    }
-
-    public EmployeeDTO(Long id, String name, Integer age, LocalDate dateOfBirth, Boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.dateOfBirth = dateOfBirth;
-        this.isActive = isActive;
-    }
 }
