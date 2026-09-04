@@ -5,6 +5,7 @@ import com.springboot.inception.notification.impl.EmailNotification;
 import com.springboot.inception.notification.impl.SmsNotification;
 import com.springboot.inception.payment.PaymentService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,5 +31,10 @@ public class BeanConfig {
     @Bean
     public NotificationService notificationService(@Qualifier("smsNotification") NotificationService notificationService) {
         return notificationService;
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }
