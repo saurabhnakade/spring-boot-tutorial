@@ -2,6 +2,7 @@ package com.springboot.inception.controllers;
 
 import com.springboot.inception.dto.EmployeeDTO;
 import com.springboot.inception.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,12 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public EmployeeDTO createEmployee(@RequestBody @Valid EmployeeDTO employeeDTO) {
         return employeeService.createEmployee(employeeDTO);
     }
 
     @PutMapping(path = "/{employeeId}")
-    public EmployeeDTO updateEmployee(@PathVariable(name = "employeeId") Long id, @RequestBody EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployee(@PathVariable(name = "employeeId") Long id, @RequestBody @Valid EmployeeDTO employeeDTO) {
         return employeeService.updateEmployee(id, employeeDTO);
     }
 
