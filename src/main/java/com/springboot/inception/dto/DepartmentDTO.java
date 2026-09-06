@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class DepartmentDTO {
     @NotBlank(message = "Title cannot be blank")
     private String title;
-    private boolean isActive;
+    private Boolean isActive;
     @CreatedAtValidation
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 }

@@ -23,6 +23,11 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployees(age));
     }
 
+    @GetMapping("/age-greater-than/{employeeAge}")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesWithAgeGreaterThan(@PathVariable(name = "employeeAge") Integer age) {
+        return ResponseEntity.ok(employeeService.getEmployeesWithAgeGreaterThan(age));
+    }
+
     @GetMapping(path = "/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable(name = "employeeId") Long id) {
         return ResponseEntity.ok(employeeService.getEmployeeById(id));

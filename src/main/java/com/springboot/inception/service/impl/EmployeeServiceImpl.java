@@ -44,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
-        if(employeeDTO == null) throw new BadRequestException("Employee object cannot be null");
+        if (employeeDTO == null) throw new BadRequestException("Employee object cannot be null");
 
         EmployeeEntity employeeEntity = modelMapper.map(employeeDTO, EmployeeEntity.class);
         EmployeeEntity employeeEntitySaved = employeeRepository.save(employeeEntity);
@@ -54,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO) {
         Optional<EmployeeEntity> employeeEntity = employeeRepository.findById(id);
-        if(employeeEntity.isEmpty()) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");;
+        if (employeeEntity.isEmpty()) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");
 
         EmployeeEntity entityUpdates = modelMapper.map(employeeDTO, EmployeeEntity.class);
         entityUpdates.setId(id);
@@ -66,7 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean deleteEmployee(Long id) {
         boolean exists = employeeRepository.existsById(id);
-        if(!exists) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");
+        if (!exists) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");
 
         employeeRepository.deleteById(id);
         return true;
@@ -75,10 +75,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO patchEmployee(Long id, Map<String, Object> updates) {
         Optional<EmployeeEntity> employeeEntity = employeeRepository.findById(id);
-        if(employeeEntity.isEmpty()) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");;
+        if (employeeEntity.isEmpty()) throw new ResourceNotFoundException("Employee with id " + id + " does not exist");
 
         EmployeeEntity employeeEntityToUpdate = employeeEntity.get();
-        updates.forEach((field, value)-> {
+        updates.forEach((field, value) -> {
             Field fieldToBeUpdated = ReflectionUtils.findField(EmployeeEntity.class, field);
             fieldToBeUpdated.setAccessible(true);
             ReflectionUtils.setField(fieldToBeUpdated, employeeEntityToUpdate, value);
@@ -86,5 +86,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         EmployeeEntity employeeEntityUpdated = employeeRepository.save(employeeEntityToUpdate);
         return modelMapper.map(employeeEntityUpdated, EmployeeDTO.class);
+    }
+
+    @Override
+    public List<EmployeeDTO> getEmployeesWithAgeGreaterThan(Integer age) {
+        return employeeRepository.findByAgeGreaterThanEqual(age)
+                .stream()
+                .filter(Objects::nonNull)
+                .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class))
+                .toList();
     }
 }

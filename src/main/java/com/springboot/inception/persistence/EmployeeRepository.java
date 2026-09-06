@@ -10,4 +10,6 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
 
     List<EmployeeEntity> findByAge(Integer age);
+
+    List<EmployeeEntity> findByAgeGreaterThanEqual(Integer age);
 }

@@ -18,4 +18,6 @@ public interface EmployeeService {
     boolean deleteEmployee(Long id);
 
     EmployeeDTO patchEmployee(Long id, Map<String, Object> updates);
+
+    List<EmployeeDTO> getEmployeesWithAgeGreaterThan(Integer age);
 }

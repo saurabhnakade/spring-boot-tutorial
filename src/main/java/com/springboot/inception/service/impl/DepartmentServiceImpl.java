@@ -44,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public DepartmentDTO createDepartment(DepartmentDTO departmentDTO) {
-        if(departmentDTO == null) throw new BadRequestException("Department object cannot be null");
+        if (departmentDTO == null) throw new BadRequestException("Department object cannot be null");
 
         departmentRepository.findByTitle(departmentDTO.getTitle()).ifPresent(
                 dE -> {
@@ -60,7 +60,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO) {
         Optional<DepartmentEntity> departmentEntity = departmentRepository.findById(id);
-        if(departmentEntity.isEmpty()) throw new ResourceNotFoundException("Department with id " + id + " does not exist");;
+        if (departmentEntity.isEmpty()) throw new ResourceNotFoundException("Department with id " + id + " does not exist");
 
         DepartmentEntity entityUpdates = modelMapper.map(departmentDTO, DepartmentEntity.class);
         entityUpdates.setId(id);
@@ -73,7 +73,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public boolean deleteDepartment(Long id) {
         boolean exists = departmentRepository.existsById(id);
-        if(!exists) throw new ResourceNotFoundException("Department with id " + id + " does not exist");
+        if (!exists) throw new ResourceNotFoundException("Department with id " + id + " does not exist");
 
         departmentRepository.deleteById(id);
         return true;
@@ -82,10 +82,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDTO patchDepartment(Long id, Map<String, Object> updates) {
         Optional<DepartmentEntity> departmentEntity = departmentRepository.findById(id);
-        if(departmentEntity.isEmpty()) throw new ResourceNotFoundException("Department with id " + id + " does not exist");;
+        if (departmentEntity.isEmpty()) throw new ResourceNotFoundException("Department with id " + id + " does not exist");
 
         DepartmentEntity departmentEntityToUpdate = departmentEntity.get();
-        updates.forEach((field, value)-> {
+        updates.forEach((field, value) -> {
             Field fieldToBeUpdated = ReflectionUtils.findField(DepartmentEntity.class, field);
             fieldToBeUpdated.setAccessible(true);
             ReflectionUtils.setField(fieldToBeUpdated, departmentEntityToUpdate, value);
