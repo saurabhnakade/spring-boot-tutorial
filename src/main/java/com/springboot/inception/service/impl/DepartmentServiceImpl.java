@@ -46,6 +46,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentDTO createDepartment(DepartmentDTO departmentDTO) {
         if(departmentDTO == null) throw new BadRequestException("Department object cannot be null");
 
+        departmentRepository.findByTitle(departmentDTO.getTitle()).ifPresent(
+                dE -> {
+                    throw new BadRequestException("Department with title " + departmentDTO.getTitle() + " already exists");
+                }
+        );
+
         DepartmentEntity departmentEntity = modelMapper.map(departmentDTO, DepartmentEntity.class);
         DepartmentEntity departmentEntitySaved = departmentRepository.save(departmentEntity);
         return modelMapper.map(departmentEntitySaved, DepartmentDTO.class);

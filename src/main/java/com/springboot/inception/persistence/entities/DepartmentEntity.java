@@ -9,7 +9,15 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "departments")
+@Table(
+        name = "departments",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"title"})
+        },
+        indexes = {
+                @Index(name = "idx_isActive", columnList = "isActive")
+        }
+)
 @Getter
 @Setter
 @NoArgsConstructor
