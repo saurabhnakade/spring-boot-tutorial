@@ -8,6 +8,9 @@ import com.springboot.inception.persistence.entities.EmployeeEntity;
 import com.springboot.inception.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -26,14 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<EmployeeDTO> getEmployees(String sortBy) {
+    public Page<EmployeeDTO> getEmployees(String sortBy, int pageNumber, int pageSize) {
         Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
 
-        List<EmployeeEntity> employeeEntities = employeeRepository.findBy(sort);
-        return employeeEntities.stream()
-                .filter(Objects::nonNull)
-                .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class))
-                .toList();
+        Page<EmployeeEntity> employeeEntities = employeeRepository.findBy(pageable);
+        return employeeEntities
+                .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class));
     }
 
     @Override

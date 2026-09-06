@@ -1,13 +1,14 @@
 package com.springboot.inception.service;
 
 import com.springboot.inception.dto.EmployeeDTO;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Map;
 
 public interface EmployeeService {
 
-    List<EmployeeDTO> getEmployees(String sortBy);
+    Page<EmployeeDTO> getEmployees(String sortBy, int pageNumber, int pageSize);
 
     EmployeeDTO getEmployeeById(Long id);
 

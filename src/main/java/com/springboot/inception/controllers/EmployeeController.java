@@ -4,6 +4,7 @@ import com.springboot.inception.dto.EmployeeDTO;
 import com.springboot.inception.service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,10 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getEmployees(@RequestParam(required = false, defaultValue = "id") String sortBy) {
-        return ResponseEntity.ok(employeeService.getEmployees(sortBy));
+    public ResponseEntity<Page<EmployeeDTO>> getEmployeesSortedAndPaginated(@RequestParam(required = false, defaultValue = "id") String sortBy,
+                                                          @RequestParam(required = false, defaultValue = "0") Integer pageNumber,
+                                                          @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        return ResponseEntity.ok(employeeService.getEmployees(sortBy, pageNumber, pageSize));
     }
 
     @GetMapping("/age-greater-than/{employeeAge}")
