@@ -19,8 +19,8 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getEmployees(@RequestParam(required = false, defaultValue = "18") Integer age) {
-        return ResponseEntity.ok(employeeService.getEmployees(age));
+    public ResponseEntity<List<EmployeeDTO>> getEmployees(@RequestParam(required = false, defaultValue = "id") String sortBy) {
+        return ResponseEntity.ok(employeeService.getEmployees(sortBy));
     }
 
     @GetMapping("/age-greater-than/{employeeAge}")

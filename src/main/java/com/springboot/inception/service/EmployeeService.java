@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface EmployeeService {
 
-    List<EmployeeDTO> getEmployees(Integer age);
+    List<EmployeeDTO> getEmployees(String sortBy);
 
     EmployeeDTO getEmployeeById(Long id);
 

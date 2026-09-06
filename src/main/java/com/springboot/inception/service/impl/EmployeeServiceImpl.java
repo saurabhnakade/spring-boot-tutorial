@@ -8,6 +8,7 @@ import com.springboot.inception.persistence.entities.EmployeeEntity;
 import com.springboot.inception.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
@@ -25,8 +26,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<EmployeeDTO> getEmployees(Integer age) {
-        List<EmployeeEntity> employeeEntities = employeeRepository.findByAge(age);
+    public List<EmployeeDTO> getEmployees(String sortBy) {
+        Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
+
+        List<EmployeeEntity> employeeEntities = employeeRepository.findBy(sort);
         return employeeEntities.stream()
                 .filter(Objects::nonNull)
                 .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class))
