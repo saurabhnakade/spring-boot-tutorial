@@ -1,6 +1,7 @@
 package com.springboot.inception.service.impl;
 
 import com.springboot.inception.dto.EmployeeDTO;
+import com.springboot.inception.dto.EmployeeProjection;
 import com.springboot.inception.exceptions.BadRequestException;
 import com.springboot.inception.exceptions.ResourceNotFoundException;
 import com.springboot.inception.persistence.EmployeeRepository;
@@ -99,6 +100,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .stream()
                 .filter(Objects::nonNull)
                 .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class))
+                .toList();
+    }
+
+    @Override
+    public List<String> getAllEmployeeNames() {
+        return employeeRepository.getAllEmployeeProjections()
+                .stream()
+                .map(EmployeeProjection::getName)
                 .toList();
     }
 }

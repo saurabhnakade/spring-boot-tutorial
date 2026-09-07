@@ -21,4 +21,6 @@ public interface EmployeeService {
     EmployeeDTO patchEmployee(Long id, Map<String, Object> updates);
 
     List<EmployeeDTO> getEmployeesWithAgeGreaterThan(Integer age);
+
+    List<String> getAllEmployeeNames();
 }

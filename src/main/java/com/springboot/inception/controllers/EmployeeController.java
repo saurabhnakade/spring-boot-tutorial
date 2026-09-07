@@ -55,4 +55,9 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> patchEmployee(@PathVariable(name = "employeeId") Long id, @RequestBody Map<String, Object> updates) {
         return ResponseEntity.ok(employeeService.patchEmployee(id, updates));
     }
+
+    @GetMapping(path = "/names")
+    public ResponseEntity<List<String>> getAllEmployeeNames() {
+        return ResponseEntity.ok(employeeService.getAllEmployeeNames());
+    }
 }
