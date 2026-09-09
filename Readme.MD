@@ -54,6 +54,10 @@ if we again call getById or we try to fetch it in same transaction , no new db c
 In short , whenever we do find in Transactional , the data is searched in PersistenceContext first
 Inside a Transactional , if we make any changes to data , at the end of transaction , any changes to data gets synced with the DB , even if we do not make a explicit save call
 
+Hospital Management ER Diagram :
+![hospital-management-system.png](src/main/resources/hospital-management-system.png)
+
+
 
 
 
