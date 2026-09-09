@@ -26,7 +26,7 @@ public class InsuranceEntity extends AuditEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private BigInteger id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String policyNumber;
 
     @Column(nullable = false)
@@ -35,4 +35,7 @@ public class InsuranceEntity extends AuditEntity {
     @Column(nullable = false)
     private LocalDate validUntil;
 
+    @OneToOne(mappedBy = "insuranceEntity")
+    // When we set mapped by , then this side becomes the inverse side
+    private PatientEntity patientEntity;
 }

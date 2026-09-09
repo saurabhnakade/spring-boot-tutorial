@@ -45,4 +45,11 @@ public class PatientEntity extends AuditEntity {
     @Enumerated(EnumType.STRING)
     private BloodGroup bloodGroup;
 
+    @OneToOne
+    @JoinColumn(name = "insurance_id")
+    // This side has JoinColumn , so it is the relationship owning side
+    // By default, the column name is set as insurance_entity(name of entity in this class) + _ + id (id of insurance)
+    // When we use a one to one mapping , automatically a UQ is created for this field by hibernate
+    private InsuranceEntity insuranceEntity;
+
 }
