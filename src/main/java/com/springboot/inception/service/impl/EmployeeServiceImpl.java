@@ -1,11 +1,11 @@
 package com.springboot.inception.service.impl;
 
-import com.springboot.inception.dto.EmployeeDTO;
-import com.springboot.inception.dto.EmployeeProjection;
+import com.springboot.inception.dto.employee.EmployeeDTO;
+import com.springboot.inception.dto.employee.EmployeeProjection;
 import com.springboot.inception.exceptions.BadRequestException;
 import com.springboot.inception.exceptions.ResourceNotFoundException;
 import com.springboot.inception.persistence.EmployeeRepository;
-import com.springboot.inception.persistence.entities.EmployeeEntity;
+import com.springboot.inception.persistence.entities.employee.EmployeeEntity;
 import com.springboot.inception.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

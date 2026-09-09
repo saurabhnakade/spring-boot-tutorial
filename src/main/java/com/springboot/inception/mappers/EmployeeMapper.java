@@ -1,7 +1,7 @@
 package com.springboot.inception.mappers;
 
-import com.springboot.inception.dto.EmployeeDTO;
-import com.springboot.inception.persistence.entities.EmployeeEntity;
+import com.springboot.inception.dto.employee.EmployeeDTO;
+import com.springboot.inception.persistence.entities.employee.EmployeeEntity;
 
 public class EmployeeMapper {
 

@@ -1,7 +1,7 @@
 package com.springboot.inception;
 
 import com.springboot.inception.persistence.DepartmentRepository;
-import com.springboot.inception.persistence.entities.DepartmentEntity;
+import com.springboot.inception.persistence.entities.employee.DepartmentEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

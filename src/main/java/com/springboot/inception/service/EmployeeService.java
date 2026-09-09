@@ -1,6 +1,6 @@
 package com.springboot.inception.service;
 
-import com.springboot.inception.dto.EmployeeDTO;
+import com.springboot.inception.dto.employee.EmployeeDTO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.springboot.inception.dto;
+package com.springboot.inception.dto.employee;
 
 import com.springboot.inception.annotations.IsActiveValidation;
 import jakarta.validation.constraints.*;

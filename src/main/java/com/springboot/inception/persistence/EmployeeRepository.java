@@ -1,10 +1,9 @@
 package com.springboot.inception.persistence;
 
-import com.springboot.inception.dto.EmployeeProjection;
-import com.springboot.inception.persistence.entities.EmployeeEntity;
+import com.springboot.inception.dto.employee.EmployeeProjection;
+import com.springboot.inception.persistence.entities.employee.EmployeeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

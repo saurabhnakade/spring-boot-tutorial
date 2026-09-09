@@ -1,6 +1,6 @@
-package com.springboot.inception.controllers;
+package com.springboot.inception.controllers.employee;
 
-import com.springboot.inception.dto.DepartmentDTO;
+import com.springboot.inception.dto.employee.DepartmentDTO;
 import com.springboot.inception.service.DepartmentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

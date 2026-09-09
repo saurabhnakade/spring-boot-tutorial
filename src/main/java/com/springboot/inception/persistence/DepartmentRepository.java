@@ -1,6 +1,6 @@
 package com.springboot.inception.persistence;
 
-import com.springboot.inception.persistence.entities.DepartmentEntity;
+import com.springboot.inception.persistence.entities.employee.DepartmentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

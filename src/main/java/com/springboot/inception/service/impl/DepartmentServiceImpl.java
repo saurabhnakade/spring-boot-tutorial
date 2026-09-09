@@ -1,10 +1,10 @@
 package com.springboot.inception.service.impl;
 
-import com.springboot.inception.dto.DepartmentDTO;
+import com.springboot.inception.dto.employee.DepartmentDTO;
 import com.springboot.inception.exceptions.BadRequestException;
 import com.springboot.inception.exceptions.ResourceNotFoundException;
 import com.springboot.inception.persistence.DepartmentRepository;
-import com.springboot.inception.persistence.entities.DepartmentEntity;
+import com.springboot.inception.persistence.entities.employee.DepartmentEntity;
 import com.springboot.inception.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

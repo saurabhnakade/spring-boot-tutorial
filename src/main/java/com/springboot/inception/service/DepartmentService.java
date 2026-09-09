@@ -1,6 +1,6 @@
 package com.springboot.inception.service;
 
-import com.springboot.inception.dto.DepartmentDTO;
+import com.springboot.inception.dto.employee.DepartmentDTO;
 
 import java.util.List;
 import java.util.Map;

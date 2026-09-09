@@ -1,4 +1,4 @@
-package com.springboot.inception.dto;
+package com.springboot.inception.dto.employee;
 
 public interface EmployeeProjection {
     String getName();

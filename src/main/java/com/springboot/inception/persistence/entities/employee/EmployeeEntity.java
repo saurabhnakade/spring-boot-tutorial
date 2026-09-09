@@ -1,4 +1,4 @@
-package com.springboot.inception.persistence.entities;
+package com.springboot.inception.persistence.entities.employee;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
