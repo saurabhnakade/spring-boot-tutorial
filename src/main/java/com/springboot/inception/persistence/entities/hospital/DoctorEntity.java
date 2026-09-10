@@ -35,4 +35,6 @@ public class DoctorEntity extends AuditEntity {
     @OneToMany(mappedBy = "doctorEntity")
     private Set<AppointmentEntity> appointmentEntitySet = new HashSet<>();
 
+    @ManyToMany(mappedBy = "doctorEntitySet")
+    private Set<MedicalDepartmentEntity> medicalDepartmentEntitySet = new HashSet<>();
 }

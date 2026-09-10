@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -25,6 +27,19 @@ public class MedicalDepartmentEntity extends AuditEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private BigInteger id;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
+
+    @OneToOne
+    @JoinColumn(name = "head_doctor_id", nullable = false)
+    // This is the owning side of relationship
+    private DoctorEntity headDoctorEntity;
+
+    @ManyToMany
+    @JoinTable(
+            name = "department_doctor",
+            joinColumns = @JoinColumn(name = "department_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id")
+    )
+    private Set<DoctorEntity> doctorEntitySet = new HashSet<>();
 }
