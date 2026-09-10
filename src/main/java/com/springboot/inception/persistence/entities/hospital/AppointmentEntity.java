@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(
         name = "appointments",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"appointmentTime"})
+                @UniqueConstraint(columnNames = {"appointment_time"})
         }
 )
 @Getter
@@ -31,5 +31,16 @@ public class AppointmentEntity extends AuditEntity {
     private LocalDateTime appointmentTime;
 
     private String reason;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    // This is the owning side of relationship
+    // nullable = false , creates a not nullable constraint on this column , so we cannot have appointment without a patient linked to it
+    private PatientEntity patientEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id", nullable = false)
+    // This is the owning side of relationship
+    private DoctorEntity doctorEntity;
 
 }

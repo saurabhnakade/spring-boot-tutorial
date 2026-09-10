@@ -10,12 +10,14 @@ import lombok.Setter;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(
         name = "patients",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"name", "gender", "bloodGroup", "birthDate"})
+                @UniqueConstraint(columnNames = {"name", "gender", "blood_group", "birth_date"})
         }
 )
 @Getter
@@ -51,5 +53,10 @@ public class PatientEntity extends AuditEntity {
     // By default, the column name is set as insurance_entity(name of entity in this class) + _ + id (id of insurance)
     // When we use a one to one mapping , automatically a UQ is created for this field by hibernate
     private InsuranceEntity insuranceEntity;
+
+    @OneToMany(mappedBy = "patientEntity")
+    // This is the inverse side
+    // OneToMany without mappedBy creates a new table to store this relationship
+    private Set<AppointmentEntity> appointmentEntitySet = new HashSet<>();
 
 }
