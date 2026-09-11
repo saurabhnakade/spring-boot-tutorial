@@ -65,6 +65,8 @@ public enum CascadeType {
         REFRESH, -> when refreshed / get
         DETACH; -> when linkage detached , please cascade it to inverse side
 }
+it is not necessary that we add cascade type on inverse side only , above example mentions inverse side just for the sake of doing it
+
 
 
 

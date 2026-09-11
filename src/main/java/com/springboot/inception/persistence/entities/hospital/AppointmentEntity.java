@@ -32,13 +32,13 @@ public class AppointmentEntity extends AuditEntity {
 
     private String reason;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", nullable = false)
     // This is the owning side of relationship
     // nullable = false , creates a not nullable constraint on this column , so we cannot have appointment without a patient linked to it
     private PatientEntity patientEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", nullable = false)
     // This is the owning side of relationship
     private DoctorEntity doctorEntity;

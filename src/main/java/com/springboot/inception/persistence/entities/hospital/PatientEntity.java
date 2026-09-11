@@ -54,7 +54,7 @@ public class PatientEntity extends AuditEntity {
     // When we use a one to one mapping , automatically a UQ is created for this field by hibernate
     private InsuranceEntity insuranceEntity;
 
-    @OneToMany(mappedBy = "patientEntity")
+    @OneToMany(mappedBy = "patientEntity", cascade = CascadeType.ALL)
     // This is the inverse side
     // OneToMany without mappedBy creates a new table to store this relationship
     private Set<AppointmentEntity> appointmentEntitySet = new HashSet<>();
