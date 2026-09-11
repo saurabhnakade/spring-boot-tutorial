@@ -47,7 +47,7 @@ public class PatientEntity extends AuditEntity {
     @Enumerated(EnumType.STRING)
     private BloodGroup bloodGroup;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "insurance_id")
     // This side has JoinColumn , so it is the relationship owning side
     // By default, the column name is set as insurance_entity(name of entity in this class) + _ + id (id of insurance)

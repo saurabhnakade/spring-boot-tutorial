@@ -52,12 +52,19 @@ Removed state cannot go back to Persistent state , it gets garbage collected
 In one transaction , if we persist a entity , it goes into PersistenceContext
 if we again call getById or we try to fetch it in same transaction , no new db call is made , the entity is fetched from PersistenceContext itself
 In short , whenever we do find in Transactional , the data is searched in PersistenceContext first
-Inside a Transactional , if we make any changes to data , at the end of transaction , any changes to data gets synced with the DB , even if we do not make a explicit save call
+Inside a Transactional , if we make any changes to data that is in persistent state, at the end of transaction , any changes to data gets synced with the DB , even if we do not make a explicit save call
 
 Hospital Management ER Diagram :
 ![hospital-management-system.png](src/main/resources/hospital-management-system.png)
 
-
+public enum CascadeType {
+        ALL,
+        PERSIST, -> when owning side saved/persisted , save inverse side
+        MERGE, -> when owning side updated , also update inverse side , if there are any updates
+        REMOVE, -> when owning side deleted , deleted inverse side
+        REFRESH, -> when refreshed / get
+        DETACH; -> when linkage detached , please cascade it to inverse side
+}
 
 
 
