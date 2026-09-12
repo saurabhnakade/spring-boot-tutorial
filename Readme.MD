@@ -67,6 +67,18 @@ public enum CascadeType {
 }
 it is not necessary that we add cascade type on inverse side only , above example mentions inverse side just for the sake of doing it
 
+CascadeType.REMOVE , allows us to remove the children , when we remove the parent
+But to remove the orphan children , eg if we simply remove the association , but do not delete the parent
+we use orphanRemoval = true for that
+This flag is mostly set on the parent side , as parent governs how the children behave
+So both are used to dictate the child behaviour when the parent is updated , but in a different way
+
+
+FetchType.LAZY , helps us to prevent the join when hibernate tries to get it
+whereas , @JsonIgnore allows us to not put into the JSON structure
+For OneToOne , ManyToOne , fetch type is EAGER by default
+For OneToMany , ManyToMany , fetch type is LAZY by default
+
 
 
 
