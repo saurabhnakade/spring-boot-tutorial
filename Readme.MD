@@ -79,6 +79,8 @@ whereas , @JsonIgnore allows us to not put into the JSON structure
 For OneToOne , ManyToOne , fetch type is EAGER by default
 For OneToMany , ManyToMany , fetch type is LAZY by default
 
+N+1 query optimization : we write our own query and custom join to fetch what is needed in one sql hit
+rather than allowing hibernate to make one query to get parent , and subsequent N queries to fetch the children 
 
 
 
