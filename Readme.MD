@@ -83,7 +83,8 @@ N+1 query optimization : we write our own query and custom join to fetch what is
 rather than allowing hibernate to make one query to get parent , and subsequent N queries to fetch the children 
 
 
-
+spring-boot-devtools , allows us to retrigger application when some code changes are made in code
+generally useful when our local version on machine is up and running somewhere remotely
 
 
 
